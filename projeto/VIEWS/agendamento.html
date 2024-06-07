@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <title>Agendamento</title>
+    <link rel="icon" href="/IMG/logo.png" type="image/x-icon">
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            background: url('/IMG/fundo.gif')repeat;
+            background-size: auto;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .btn-rosa {
+            background-color: black;
+            color: white;
+        }
+
+        .btn-rosa:hover {
+            background-color: #0c010a;
+            color: rgb(255, 252, 252);
+        }
+
+        .title-with-image {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .title-with-image img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .title-with-image h1 {
+            font-family: "Cinzel", cursive;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px;
+        }
+
+        .form-group {
+            flex: 1 1 45%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-rosa {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn-rosa:hover {
+            background-color: #0c010a;
+            color: rgb(255, 252, 252);
+        }
+    </style>
+</head>
+<body>
+    <div class="title-with-image">
+        <img src="/IMG/logo.png" alt="Logo">
+        <h1>QueenCard</h1>
+    </div>
+    <div class="form-container">
+        <div class="form-group">
+            <label for="codigo">Código</label>
+            <input type="text" id="codigo" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="cliente">Nome do Cliente</label>
+            <input type="text" id="cliente" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="servico">Prestador de Serviço</label>
+            <input type="text" id="servico" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="servico"> Serviço</label>
+            <select id="servico" class="form-control">
+                <option value="">Selecione o Serviço</option>
+                <option value="alisamento">Alisamento</option>
+                <option value="barba">Barba</option>
+                <option value="botox">Botox</option>
+                <option value="coloração">Coloração</option>
+                <option value="corteCabelo">Corte de Cabelo</option>
+                <option value="depilação">Depilação</option>
+                <option value="design">Design de sobrancelha</option>
+                <option value="escova">Escova</option>
+                <option value="hidratação">Hidratação</option>
+                <option value="maquiagem">Maquiagem</option>
+                <option value="manicurePedicure">Manicure e Pedicure</option>
+                <option value="penteados">Penteados</option>
+                <option value="progressiva">Progressiva</option>
+                <option value="selante">Selante</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="data">Data</label>
+            <input type="date" id="data" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="horario">Horário</label>
+            <input type="time" id="horario" class="form-control">
+        </div>
+        <div class="btn-container">
+            <button id="agendar" class="btn btn-rosa">Agendar</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('agendar').addEventListener('click', function() {
+            const codigo = document.getElementById('codigo').value;
+            const cliente = document.getElementById('cliente').value;
+            const servico = document.getElementById('servico').value;
+            const data = document.getElementById('data').value;
+            const horario = document.getElementById('horario').value;
+
+            if (codigo && cliente && servico && data && horario) {
+                const agendamento = {
+                    codigo: codigo,
+                    cliente: cliente,
+                    servico: servico,
+                    data: data,
+                    horario: horario,
+                    status: 'Pendente'
+                };
+
+                let agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+                agendamentos.push(agendamento);
+                localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+
+                document.getElementById('codigo').value = '';
+                document.getElementById('cliente').value = '';
+                document.getElementById('servico').value = '';
+                document.getElementById('data').value = '';
+                document.getElementById('horario').value = '';
+
+                alert('Agendamento realizado com sucesso!');
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        });
+    </script>
+</body>
+</html>
