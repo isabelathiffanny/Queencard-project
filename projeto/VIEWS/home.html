@@ -51,7 +51,27 @@
             background-color: #ce89b9cc; 
             color: #000000; 
         }
-
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+        }
+        .btn-footer {
+            background-color: #000000; 
+            color: white; 
+            transition: background-color 0.3s; 
+            border: none; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+        }
+        .btn-footer:hover {
+            background-color: #ce89b9cc; 
+            color: #000000; 
+        }
     </style>
 </head>
 <body>
@@ -59,5 +79,11 @@
         <div class="title">QueenCard</div>
     </div>
     <a href="login.html" class="btn btn-primary btn-entrar">Entrar</a>
+    
+    <div class="footer">
+        <button class="btn-footer">Sobre Nós</button>
+        <button class="btn-footer">Área do Funcionário</button>
+        <button class="btn-footer">Informações de Contato</button>
+    </div>
 </body>
 </html>
