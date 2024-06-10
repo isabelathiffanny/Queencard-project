@@ -1,0 +1,2 @@
+O QueenCard é um projeto de um aplicativo para agendamento de serviços em salões de beleza. Ele permite que funcionários gerenciem e alterem agendamentos, além de adicionar novos clientes. Os clientes podem acompanhar seus agendamentos, solicitar cancelamentos e consultar horários a qualquer momento. O aplicativo atende principalmente a clientes que buscam serviços de salão de beleza e os atendentes que gerenciam os agendamentos. Ele visa melhorar a eficiência e a conveniência para ambos os lados.
+
